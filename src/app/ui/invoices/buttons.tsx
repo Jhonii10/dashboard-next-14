@@ -1,5 +1,11 @@
+'use client'
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { deleteInvoice } from '@/app/lib/actions';
+import Notiflix from 'notiflix';
+
+
+
 
 export function CreateInvoice() {
   return (
@@ -24,13 +30,45 @@ export function UpdateInvoice({ id }: { id: string }) {
   );
 }
 
+
+
 export function DeleteInvoice({ id }: { id: string }) {
+    
+   
+    const confirmDelete = ()=>{
+        Notiflix.Confirm.show(
+            'Delete Invoice',
+            '¿Are you sure you want to delete this invoice?',
+            'Delete',
+            'Cancel',
+            function okCb() {
+                deleteInvoice(id);
+            },
+            function cancelCb() {
+              return
+            },
+            {
+              width: '320px',
+              borderRadius: '8px',
+              titleColor:'black',
+              okButtonBackground:'red',
+              cssAnimationStyle:'zoom',
+      
+            },
+          );
+      }
+      
+     
+      //const deleteInvoiceWithId = deleteInvoice.bind(null , id);
+      
   return (
-    <>
-      <button className="rounded-md border p-2 hover:bg-gray-100">
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-5" />
-      </button>
+    <>  
+          <form action={confirmDelete}>
+        <button className="rounded-md border p-2 hover:bg-gray-100" >
+            <span className="sr-only">Delete</span>
+            <TrashIcon className="w-5" />
+        </button>
+        </form> 
     </>
   );
 }
