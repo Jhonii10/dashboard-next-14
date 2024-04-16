@@ -1,4 +1,3 @@
-
 import { inter } from '@/app/ui/fonts';
 import Search from '@/app/ui/search';
 import {
@@ -31,7 +30,6 @@ export default async function CustomersTable({
                       <div>
                         <div className="mb-2 flex items-center">
                           <div className="flex items-center gap-3">
-                            1
                             <p>{customer.name}</p>
                           </div>
                         </div>
@@ -82,7 +80,6 @@ export default async function CustomersTable({
                     <tr key={customer.id} className="group">
                       <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-black group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6">
                         <div className="flex items-center gap-3">
-                          
                           <p>{customer.name}</p>
                         </div>
                       </td>
