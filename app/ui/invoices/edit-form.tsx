@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { updateInvoice } from '@/app/lib/actions';
+import { State, updateInvoice } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
 
 export default function EditInvoiceForm({
@@ -21,7 +21,8 @@ export default function EditInvoiceForm({
 }) {
   const initialState = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
-  const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
+  
+  const [state, dispatch] = useFormState<State , FormData>(updateInvoiceWithId, initialState);
 
   return (
     <form action={dispatch}>
